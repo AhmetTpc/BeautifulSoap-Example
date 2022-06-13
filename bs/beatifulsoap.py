@@ -10,9 +10,9 @@ def url_getir():
     Craw = requests.get(Url)
     soup = BeautifulSoup(Craw.text, 'html.parser')
     images = soup.find_all("img")
-    if not (os.path.exists("Chair")):
-        os.mkdir("Chair")
-    f = open(os.path.join("Chair", "url.txt"), "a")
+    if not (os.path.exists("img_path")):
+        os.mkdir("img_path")
+    f = open(os.path.join("img_path", "url.txt"), "a")
     for image in images:
         link = image['src']
         if link.startswith("h"):
@@ -20,7 +20,7 @@ def url_getir():
     print("url'ler getirildi")
 
 def kaydet():
-    dosya = open(os.path.join("Chair", "url.txt"), "r")
+    dosya = open(os.path.join("img_path", "url.txt"), "r")
     if not (os.path.exists("img")):
         os.mkdir("img")
     for satir in dosya:
